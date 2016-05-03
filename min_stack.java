@@ -45,3 +45,48 @@ public class MinStack {
  * int param_3 = obj.top();
  * int param_4 = obj.getMin();
  */
+ 
+ /** 
+ ** advanced solution
+ ** 利用存一个有关min 的对称数来复原旧的min
+**/
+public class MinStack {
+    Stack<Integer> stack;
+    int min;
+    
+    public MinStack() {
+        // do initialize if necessary
+        stack = new Stack<Integer>();
+        min = 0;
+    }
+
+    public void push(int number) {
+        // write your code here
+        if (stack.isEmpty()) {
+            stack.push(number);
+            min = number;
+        } else if (number < min) {
+            stack.push(2 * number - min);
+            min = number;
+        } else {
+            stack.push(number);
+        }
+    }
+
+    public int pop() {
+        // write your code here
+        int number = stack.pop();
+        if (number < min) {
+            int prevMin = min;
+            min = 2 * min - number;
+            return prevMin;
+        } else {
+            return number;
+        }
+    }
+
+    public int min() {
+        // write your code here
+        return min;
+    }
+}
