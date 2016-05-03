@@ -1,8 +1,7 @@
 /**
  * solution1: use min heap
-**/
-/**
-* Definition for ListNode.
+
+ * Definition for ListNode.
  * public class ListNode {
  *     int val;
  *     ListNode next;
