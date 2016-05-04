@@ -44,4 +44,17 @@ class Solution {
         
         return res[n - 1];
     }
+    
+    //learn to write real run code
+    public static void main (String[] args) {
+		//code
+		Scanner reader = new Scanner(System.in);  // Reading from System.in
+        int n = reader.nextInt();
+        int test = 0;
+        GFG solution = new GFG();
+        for (int i = 0; i < n; i++) {
+            test = reader.nextInt();
+            System.out.println(solution.nthUglyNumber(test));
+        }
+	}
 };
