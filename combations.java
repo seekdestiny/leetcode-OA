@@ -5,6 +5,10 @@
             if (i > 0 && S.get(i - 1) == S.get(i) && !visited[i - 1]) {
                 continue;
             }
+   或者 while (i + 1 < num.length && num[i] == num[i + 1]) {
+            i++;        
+        }
+   }
 **/
 
 public class Solution {
