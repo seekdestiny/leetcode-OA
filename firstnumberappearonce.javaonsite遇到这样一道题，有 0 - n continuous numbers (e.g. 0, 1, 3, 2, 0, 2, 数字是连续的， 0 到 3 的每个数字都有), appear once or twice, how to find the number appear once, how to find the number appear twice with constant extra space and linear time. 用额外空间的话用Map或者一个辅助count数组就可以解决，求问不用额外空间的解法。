@@ -1,24 +1,24 @@
 
 /** onsite遇到这样一道题，
-有 0 - n continuous numbers (e.g. 0, 1, 3, 2, 0, 2, 数字是连续的， 0 到 3 的每个数字都有), 
-appear once or twice, how to find the number appear once, 
-how to find the number appear twice with constant extra space and linear time. 
-用额外空间的话用Map或者一个辅助count数组就可以解决，求问不用额外空间的解法
+** 有 0 - n continuous numbers (e.g. 0, 1, 3, 2, 0, 2, 数字是连续的， 0 到 3 的每个数字都有), 
+** appear once or twice, how to find the number appear once, 
+** how to find the number appear twice with constant extra space and linear time. 
+** 用额外空间的话用Map或者一个辅助count数组就可以解决，求问不用额外空间的解法
 **/
 
 /**
-大概的思路就是由于题目告诉了我们数字是连续的，
-这个是关键信息。 因为连续的如果排序的好的话
-，你的那个例子其实是两个"0" 应该放在第0，1位; 然后"1" 放在 第2位， 第3位缺了一个"1"，
-因为本来应该是配对的1，现在少了一个(这个位置其实就是我们要去寻找的那个 first number appear once);
-然后两个"2"放在第4位和第5位； 然后3 放在第6位，然后他还缺少了一个"3". 这里其实我们把数组按照我上面给出的那个位置排个序，
-然后我们就变成了下面这个数组[0,0,1,空缺，2,2,3，空缺]， 然后我们再扫一遍，看第i位和第i+1位是否匹配都是相同的数就可以了，
-扫到的第一不相同的数就返回first number appear once, 扫到第一个相同的数对，那么就是first number appear twice.
-详细代码如下
+** 大概的思路就是由于题目告诉了我们数字是连续的，
+** 这个是关键信息。 因为连续的如果排序的好的话
+** ，你的那个例子其实是两个"0" 应该放在第0，1位; 然后"1" 放在 第2位， 第3位缺了一个"1"，
+** 因为本来应该是配对的1，现在少了一个(这个位置其实就是我们要去寻找的那个 first number appear once);
+** 然后两个"2"放在第4位和第5位； 然后3 放在第6位，然后他还缺少了一个"3". 这里其实我们把数组按照我上面给出的那个位置排个序，
+** 然后我们就变成了下面这个数组[0,0,1,空缺，2,2,3，空缺]， 然后我们再扫一遍，看第i位和第i+1位是否匹配都是相同的数就可以了，
+** 扫到的第一不相同的数就返回first number appear once, 扫到第一个相同的数对，那么就是first number appear twice.
+** 详细代码如下
 **/
 
 public class Solution {
-public void swap(int i, int j, int []A){
+    public void swap(int i, int j, int []A){
         int temp = A[i];
         A[i] =A[j];
         A[j] = temp;
