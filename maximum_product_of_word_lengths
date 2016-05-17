@@ -1,0 +1,37 @@
+/** use bit manipulation
+ * bit and to determine whether two strings are overlapped
+**
+
+public class Solution {
+    public int maxProduct(String[] words) {
+        int[] bit = new int[words.length];
+        
+        for (int i = 0; i < words.length; i++) {
+            bit[i] = convert(words[i]);
+        }
+        
+        int max = 0;
+        for (int k = 0; k < bit.length; k++) {
+            for (int j = k + 1; j < bit.length; j++) {
+                if ((bit[k] & bit[j]) == 0) {
+                    max = Math.max(max, words[k].length() * words[j].length());    
+                }
+            }
+        }
+        
+        return max;
+    }
+    
+    private int convert(String word) {
+        char[] cArray = word.toCharArray();
+        
+        int bit = 0;
+        
+        for (int i = 0; i < cArray.length; i++) {
+            int shift = (int) (cArray[i] - 'a');
+            bit |= (1 << shift);
+        }
+        
+        return bit;
+    }
+}
