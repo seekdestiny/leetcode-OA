@@ -55,3 +55,53 @@ public class Solution {
         return false;
     }
 }
+
+//BFS
+public class Solution {
+    public int[] findOrder(int numCourses, int[][] prerequisites) {
+        int[] result = new int[numCourses];
+        
+        if (prerequisites == null || prerequisites.length == 0 || prerequisites[0].length == 0) {
+            for (int i = 0; i < numCourses; i++) {
+                 result[i] = i;
+            }
+            return result;
+        }
+        
+        Map<Integer, List<Integer>> graph = new HashMap<Integer, List<Integer>>();
+        int[] inDegree = new int[numCourses];
+        
+        for (int i = 0; i < numCourses; i++) {
+            graph.put(i, new ArrayList<Integer>());
+        }
+        
+        for (int i = 0; i < prerequisites.length; i++) {
+            graph.get(prerequisites[i][1]).add(prerequisites[i][0]);
+            inDegree[prerequisites[i][0]]++;
+        }
+        
+        Queue<Integer> queue = new LinkedList<Integer>();
+        for (int j = 0; j < numCourses; j++) {
+            if (inDegree[j] == 0) {
+                queue.offer(j);
+            }
+        }
+        
+        int count = numCourses;
+        int size = 0;
+        while (!queue.isEmpty()) {
+            int current = queue.poll();
+            result[size++] = current;
+            for (Integer neighbor : graph.get(current)) {
+                if (--inDegree[neighbor] == 0) {
+                    queue.offer(neighbor);
+                }
+            }
+            
+            count--;    
+        }
+        
+        if (count == 0) return result;
+        else return new int[0];
+    }
+}
