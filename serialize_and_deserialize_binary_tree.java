@@ -7,6 +7,10 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
+/** level order traversal
+ * bfs
+**/
+ 
 public class Codec {
 
     // Encodes a tree to a single string.
