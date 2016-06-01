@@ -1,3 +1,5 @@
+// dp[i][j] means whether it is possible to get size j backpack with first i items.
+
 public class Solution {
     /**
      * @param m: An integer m denotes the size of a backpack
