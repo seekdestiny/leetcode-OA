@@ -75,9 +75,6 @@ public class Solution {
      * @param root: The root of tree
      * @return: the head of doubly list node
      */
-    private DoublyListNode dummy = new DoublyListNode(0);
-    private DoublyListNode current = dummy;
-     
     public DoublyListNode bstToDoublyList(TreeNode root) {  
         DoublyListNode dummy = new DoublyListNode(0);
         DoublyListNode current = dummy;
