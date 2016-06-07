@@ -1,3 +1,6 @@
+//max means when nums[i] is multiplied what is the local max product?
+//min means when nums[i] is multiplied what is the local min product?
+
 public class Solution {
     /**
      * @param nums: an array of integers
@@ -16,13 +19,15 @@ public class Solution {
         for (int i = 1; i < nums.length; i++) {
             int preMax = max;
             int preMin = min;
-            max = min = nums[i];
+        
             if (nums[i] > 0) {
-                max = Math.max(max, preMax * nums[i]);
-                min = Math.min(min, preMin * nums[i]);
+                max = Math.max(nums[i], preMax * nums[i]);
+                min = Math.min(nums[i], preMin * nums[i]);
             } else if (nums[i] < 0) {
-                max = Math.max(max, preMin * nums[i]);
-                min = Math.min(min, preMax * nums[i]);
+                max = Math.max(nums[i], preMin * nums[i]);
+                min = Math.min(nums[i], preMax * nums[i]);
+            } else {
+                max = min = nums[i];
             }
             
             result = Math.max(result, max);
