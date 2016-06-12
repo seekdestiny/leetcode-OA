@@ -38,3 +38,60 @@ class Solution {
         }
     }
 }
+
+//non-recursive
+class Solution {
+    /**
+     * @param nums: A list of integers.
+     * @return: A list of permutations.
+     */
+    public ArrayList<ArrayList<Integer>> permute(ArrayList<Integer> nums) {
+        // write your code here
+        ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
+        if (nums == null || nums.size() == 0) {
+            return res;
+        }
+        
+        Collections.sort(nums);
+        
+        while (true) {
+            res.add(new ArrayList<Integer>(nums));
+            
+            int k = -1;
+            for (int i = nums.size() - 2; i >= 0; i--) {
+                if (nums.get(i) < nums.get(i + 1)) {
+                    k = i;
+                    break;
+                }
+            }
+            
+            if (k == -1) break;
+            
+            int l = nums.size() - 1;
+            while (nums.get(l) <= nums.get(k)) {
+                l--;
+            }
+            
+            int temp = nums.get(l);
+            nums.set(l, nums.get(k));
+            nums.set(k, temp);
+            reverse(nums, k + 1, nums.size() - 1);
+        }
+        
+        return res;
+    }    
+    
+    private void reverse(ArrayList<Integer> nums, int start, int end) {
+        int l = start;
+        int r = end;
+        while (l < r) {
+            int temp = nums.get(l);
+            nums.set(l, nums.get(r));
+            nums.set(r, temp);
+            l++;
+            r--;
+        }
+    }
+}
+
+
