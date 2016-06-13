@@ -12,7 +12,7 @@ public class Solution {
         // write your code here
         ArrayList<Integer> result = new ArrayList<Integer>();
         
-        if (nums == null || nums.length < k) {
+        if (nums == null || nums.length < k || k <= 0) {
             return result;
         }
         
