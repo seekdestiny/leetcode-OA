@@ -39,7 +39,10 @@ public class Solution {
     }
     
     private void add(int val) {
-        if (maxHeap.isEmpty()) maxHeap.offer(val);
+        if (maxHeap.isEmpty()) {
+        	maxHeap.offer(val);
+        	return;
+        }
         if (val > maxHeap.peek()) {
             minHeap.offer(val);
         } else {
