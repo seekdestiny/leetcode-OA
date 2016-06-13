@@ -33,7 +33,7 @@ public class Solution {
                 deque.removeLast();
             }
             
-            deque.offerLast(i);
+            deque.offer(i);
             
             if ((i + 1) >= k) {
                 result.add(nums[deque.peek()]);
